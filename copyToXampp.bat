@@ -3,5 +3,3 @@
 
 cd ..
 robocopy E-Banking_School_Project C:\xampp\htdocs /MIR
-
-pause

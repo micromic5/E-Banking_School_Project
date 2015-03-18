@@ -3,18 +3,18 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema db_ebanking
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `mydb` ;
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `mydb` ;
+DROP SCHEMA IF EXISTS `db_ebanking` ;
+CREATE SCHEMA IF NOT EXISTS `db_ebanking` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `db_ebanking` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`tbl_customer`
+-- Table `db_ebanking`.`tbl_customer`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tbl_customer` ;
+DROP TABLE IF EXISTS `db_ebanking`.`tbl_customer` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tbl_customer` (
+CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_customer` (
   `PK_customerNumber` INT NOT NULL AUTO_INCREMENT,
   `password` VARCHAR(130) NOT NULL,
   `salt` VARCHAR(128) NOT NULL,
@@ -26,11 +26,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tbl_account`
+-- Table `db_ebanking`.`tbl_account`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tbl_account` ;
+DROP TABLE IF EXISTS `db_ebanking`.`tbl_account` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tbl_account` (
+CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_account` (
   `PK_accountNumber` INT NOT NULL AUTO_INCREMENT,
   `value` DECIMAL(63,2) NOT NULL,
   `accountType` INT NOT NULL,
@@ -39,11 +39,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tbl_log`
+-- Table `db_ebanking`.`tbl_log`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tbl_log` ;
+DROP TABLE IF EXISTS `db_ebanking`.`tbl_log` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tbl_log` (
+CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_log` (
   `PK_lognumber` INT NOT NULL AUTO_INCREMENT,
   `value` VARCHAR(45) NULL,
   PRIMARY KEY (`PK_lognumber`))
@@ -51,11 +51,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tbl_logIndex`
+-- Table `db_ebanking`.`tbl_logIndex`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tbl_logIndex` ;
+DROP TABLE IF EXISTS `db_ebanking`.`tbl_logIndex` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tbl_logIndex` (
+CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_logIndex` (
   `PK_name` INT NOT NULL,
   `PK_customerNumber` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`PK_name`, `PK_customerNumber`))
@@ -63,11 +63,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tbl_accountPermission`
+-- Table `db_ebanking`.`tbl_accountPermission`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tbl_accountPermission` ;
+DROP TABLE IF EXISTS `db_ebanking`.`tbl_accountPermission` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tbl_accountPermission` (
+CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_accountPermission` (
   `PK_accountPermission` INT NOT NULL AUTO_INCREMENT,
   `FK_customerNumber` INT NOT NULL,
   `FK_accountNumber` INT NOT NULL,
@@ -77,23 +77,23 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tbl_accountPermission` (
   INDEX `fk_tbl_accountPermission_tbl_account1_idx` (`FK_accountNumber` ASC),
   CONSTRAINT `PK_customerNumber`
     FOREIGN KEY (`FK_customerNumber`)
-    REFERENCES `mydb`.`tbl_customer` (`PK_customerNumber`)
+    REFERENCES `db_ebanking`.`tbl_customer` (`PK_customerNumber`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tbl_accountPermission_tbl_account1`
     FOREIGN KEY (`FK_accountNumber`)
-    REFERENCES `mydb`.`tbl_account` (`PK_accountNumber`)
+    REFERENCES `db_ebanking`.`tbl_account` (`PK_accountNumber`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tbl_booking`
+-- Table `db_ebanking`.`tbl_booking`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tbl_booking` ;
+DROP TABLE IF EXISTS `db_ebanking`.`tbl_booking` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tbl_booking` (
+CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_booking` (
   `PK_booking` INT NOT NULL,
   `value` DECIMAL(63,2) NOT NULL,
   `bookingTime` DATETIME NOT NULL,
@@ -103,11 +103,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tbl_booking_has_tbl_account`
+-- Table `db_ebanking`.`tbl_booking_has_tbl_account`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tbl_booking_has_tbl_account` ;
+DROP TABLE IF EXISTS `db_ebanking`.`tbl_booking_has_tbl_account` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tbl_booking_has_tbl_account` (
+CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_booking_has_tbl_account` (
   `tbl_booking_PK_booking` INT NOT NULL,
   `tbl_account_PK_accountNumber` INT NOT NULL,
   `isCredit` TINYINT(1) NOT NULL,
@@ -116,23 +116,23 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tbl_booking_has_tbl_account` (
   INDEX `fk_tbl_booking_has_tbl_account_tbl_booking1_idx` (`tbl_booking_PK_booking` ASC),
   CONSTRAINT `fk_tbl_booking_has_tbl_account_tbl_booking1`
     FOREIGN KEY (`tbl_booking_PK_booking`)
-    REFERENCES `mydb`.`tbl_booking` (`PK_booking`)
+    REFERENCES `db_ebanking`.`tbl_booking` (`PK_booking`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tbl_booking_has_tbl_account_tbl_account1`
     FOREIGN KEY (`tbl_account_PK_accountNumber`)
-    REFERENCES `mydb`.`tbl_account` (`PK_accountNumber`)
+    REFERENCES `db_ebanking`.`tbl_account` (`PK_accountNumber`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tbl_loginDate`
+-- Table `db_ebanking`.`tbl_loginDate`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tbl_loginDate` ;
+DROP TABLE IF EXISTS `db_ebanking`.`tbl_loginDate` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tbl_loginDate` (
+CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_loginDate` (
   `PK_loginDate` INT NOT NULL,
   `loginTime` DATETIME NOT NULL,
   `ipAddress` VARCHAR(45) NULL,
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tbl_loginDate` (
   INDEX `fk_tbl_loginDate_tbl_customer1_idx` (`FK_customerNumber` ASC),
   CONSTRAINT `fk_tbl_loginDate_tbl_customer1`
     FOREIGN KEY (`FK_customerNumber`)
-    REFERENCES `mydb`.`tbl_customer` (`PK_customerNumber`)
+    REFERENCES `db_ebanking`.`tbl_customer` (`PK_customerNumber`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
