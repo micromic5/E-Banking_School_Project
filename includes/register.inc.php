@@ -3,7 +3,8 @@ include_once 'db_connect.php';
  
 $error_msg = "";
  
-if (isset($_POST['firstname'], $_POST['lastname'], $_POST['passwordHash'], $_POST['age'])) {
+if (isset($_POST['firstname'], $_POST['lastname'], $_POST['passwordHash'], $_POST['age'])) 
+{
     // Sanitize and validate the data passed in
     $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
     $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
