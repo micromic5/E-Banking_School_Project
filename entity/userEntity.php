@@ -3,8 +3,6 @@ include_once 'connectionEntity.php';
 
 class User extends Connection{
 	private $PK_customerNumber;
-	private $password;
-	private $salt;
 	private $lastname;
 	private $firstname;
 	private $age;
@@ -14,6 +12,7 @@ class User extends Connection{
 		$this->PK_customerNumber = $user->PK_customerNumber;
 		$this->lastname = $user->lastname;
 		$this->firstname = $user->firstname;
+		$this->age = $user->age;
 	}
 	
 	function getPK_CustomerNumber(){
@@ -26,5 +25,9 @@ class User extends Connection{
 	
 	function getFirstname(){
 		return $this->firstname;
+	}
+	
+	function getAge(){
+		return $this->age;
 	}
 }
