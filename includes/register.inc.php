@@ -89,7 +89,7 @@ if (isset($_POST['firstname'], $_POST['lastname'], $_POST['passwordHash'], $_POS
                 header('Location: ../registration.php?err=Registration failure: INSERT');
             }
         }
-        header('Location: ../register_success.php');
+        header('Location: register_success.php');
     }
 }
 ?>

@@ -1,18 +1,8 @@
 <?php
+include("/layout/header.html");
 include_once 'includes/register.inc.php';
 include_once 'includes/functions.php';
 ?>
-
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Secure Login: Registration Form</title>
-		<script type="text/JavaScript" src="js/sha512.js"></script> 
-		<script type="text/JavaScript" src="js/forms.js"></script>
-		<link rel="stylesheet" href="styles/main.css" />
-	</head>
-	<body>
 		<!-- Registration form to be output if the POST variables are not
 		set or if the registration script caused an error. -->
 		<h1>Register with us</h1>
@@ -57,6 +47,7 @@ include_once 'includes/functions.php';
 								   this.form.password,
 								   this.form.confirmpwd);" /> 
 		</form>
-		<p>Return to the <a href="login.php">TODO login page</a>.</p>
-	</body>
-</html>
+		<p>Return to the <a href="index.php">login page</a>.</p>
+<?php
+include("/layout/footer.html");
+?>
