@@ -107,7 +107,8 @@ function login_check($db) {
  
 		$PK_customerNumber = $_SESSION['PK_customerNumber'];
 		$login_string = $_SESSION['login_string'];
-		$username = $_SESSION['username'];
+		//$username = $_SESSION['username'];
+		$username = $_SESSION['PK_customerNumber'];
  
 		// Get the user-agent string of the user.
 		$user_browser = $_SERVER['HTTP_USER_AGENT'];
