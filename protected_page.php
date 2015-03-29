@@ -1,12 +1,15 @@
-<?php
+<?php 
+include("/layout/header.html");
+include("/layout/nav.html");
 include_once 'includes/functions.php';
-include_once 'includes/db_connect.php';
+include_once 'entity/accountPermissionEntity.php';
 
-// Include database connection and functions here.  See 3.1. 
-sec_session_start(); 
 if(login_check($db) == true) {
 	?>
-    <h2>Welcome to the new world</h2>
+	<div class="content">
+		<h2>Overview</h2>
+	</div>
+
 	<?php
 } else { 
     ?>
@@ -14,3 +17,4 @@ if(login_check($db) == true) {
 	<?php
 }
 ?>
+<?php include("/layout/footer.html");?>
