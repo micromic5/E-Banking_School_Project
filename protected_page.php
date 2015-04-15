@@ -3,7 +3,7 @@ include("/layout/header.html");
 include("/layout/nav.html");
 include_once 'includes/functions.php';
 include_once 'entity/accountPermissionEntity.php';
-include_once 'entity/userEntity.php';
+include_once 'entity/customerEntity.php';
 
 $saldoTotal = 0;
 if(login_check($db) == true) {
@@ -19,7 +19,7 @@ if(login_check($db) == true) {
                     </thead>
                     <tbody>
                 <?php
-                    $user = new User($_SESSION['PK_customerNumber']);
+                    $user = new Customer($_SESSION['PK_customerNumber']);
                     $acpArr = $user->getAccountsPermission();
                     foreach($acpArr as $accountPermission){
                         $account = $accountPermission->getAccount();

@@ -26,18 +26,4 @@ class AccountPermission extends Connection{
         public function getPermission() {
             return $this->permission;
         }
-
-        public function setPK_accountPermission($PK_accountPermission) {
-            $this->PK_accountPermission = $PK_accountPermission;
-        }
-
-        public function setAccount($account) {
-            $this->account = $account;
-        }
-
-        public function setPermission($permission) {
-            $this->permission = $permission;
-        }
-
-
 }

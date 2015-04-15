@@ -1,21 +1,21 @@
 <?php
 include_once 'connectionEntity.php';
 include_once 'accountPermissionEntity.php';
-class User extends Connection{
+class Customer extends Connection{
 	private $PK_customerNumber;
 	private $lastname;
 	private $firstname;
 	private $age;
         private $accountsPermission;
 	
-	function User($PK_customerNumber){
-		$user=parent::getConnection()->query("Select * From tbl_customer Where PK_customerNumber=".$PK_customerNumber)->fetchObject();
-		$this->PK_customerNumber = $user->PK_customerNumber;
-		$this->lastname = $user->lastname;
-		$this->firstname = $user->firstname;
-		$this->age = $user->age;
+	function Customer($PK_customerNumber){
+		$customer=parent::getConnection()->query("Select * From tbl_customer Where PK_customerNumber=".$PK_customerNumber)->fetchObject();
+		$this->PK_customerNumber = $customer->PK_customerNumber;
+		$this->lastname = $customer->lastname;
+		$this->firstname = $customer->firstname;
+		$this->age = $customer->age;
 
-		$acp=parent::getConnection()->query("Select PK_accountPermission From tbl_accountpermission Where FK_customerNumber=".$user->PK_customerNumber);
+		$acp=parent::getConnection()->query("Select PK_accountPermission From tbl_accountpermission Where FK_customerNumber=".$customer->PK_customerNumber);
 		$acpArray = array();
 		while($row = $acp->fetchObject()){
 			$acpArray[]=new AccountPermission($row->PK_accountPermission);
