@@ -1,29 +1,25 @@
 <?php
-include("/layout/header.html");
-include_once 'includes/functions.php';
- 
-sec_session_start();
- 
-if (login_check($db) == true) {
-    $logged = 'in';
-} else {
-    $logged = 'out';
-}
-?>
-        <?php
-        if (isset($_GET['error'])) {
-            echo '<p class="error">Error Logging In!</p>';
-        }
-        ?> 
-        <form action="includes/process_login.php" method="post" name="login_form">                      
-            User Number: <input type="number" min="1" name="PK_customerNumber" />
-            Password: <input type="password" 
-                             name="password" 
-                             id="password"/>
-            <input type="button" 
-                   value="Login" 
-                   onclick="formhash(this.form, this.form.password);" /> 
-        </form>
+    include_once 'includes/includeHeader.php';
+
+    if (login_check($db) == true) {
+        $logged = 'in';
+    } else {
+        $logged = 'out';
+    }
+    
+    if (isset($_GET['error'])) {
+        echo '<p class="error">Error Logging In!</p>';
+    }
+?> 
+<form action="includes/process_login.php" method="post" name="login_form">                      
+    User Number: <input type="number" min="1" name="PK_customerNumber" />
+    Password: <input type="password" 
+                     name="password" 
+                     id="password"/>
+    <input type="button" 
+           value="Login" 
+           onclick="formhash(this.form, this.form.password);" /> 
+</form>
  
 <?php
         if (login_check($db) == true) {
@@ -35,4 +31,6 @@ if (login_check($db) == true) {
                         echo "<p>If you don't have a login, please <a href='registration.php'>register</a></p>";
                 }
 ?>      
-<?php include("/layout/footer.html");?>
+<?php 
+include("/includes/includeFooter.php");
+?>

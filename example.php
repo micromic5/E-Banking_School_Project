@@ -1,5 +1,5 @@
 <?php
-require_once('includes/functions.php');
+include '/includes/includeHeader.php';
 
 sec_session_start();
 
@@ -20,4 +20,5 @@ if (isset($_POST['PK_customerNumber'], $_POST['password']))
     echo 'Invalid Request';
 }
 
+include '/includes/includeFooter.php';
 ?>

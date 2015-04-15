@@ -1,49 +1,20 @@
 <?php 
-include("/layout/header.html");
-include("/layout/nav.html");
-include_once 'includes/functions.php';
+include '/includes/includeHeader.php';
 include_once 'entity/accountPermissionEntity.php';
-include_once 'entity/customerEntity.php';
 
-$saldoTotal = 0;
-if(login_check($db) == true) {
-	?>
-	<div class="content">
-		<h2>Overview</h2>
-                <table>
-                    <thead>
-                        <th>Konto-Nummer</th>
-                        <th>Konto Zugriff</th>
-                        <th>Konto-Bezeichnung</th>
-                        <th>Konto-Inhaber</th>
-                        <th>Saldo</th>
-                    </thead>
-                    <tbody>
-                <?php
-                    $user = new Customer($_SESSION['PK_customerNumber']);
-                    $acpArr = $user->getAccountsPermissions();
-                    foreach($acpArr as $accountPermission){
-                        $account = $accountPermission->getAccount();
-                    ?>
-                        <tr>
-                        <td><?=$account->getPK_accountNumber()?></td>
-                        <td><?=$accountPermission->getPermission()?></td>
-                        <td><?=$account->getAccountType()?></td>
-                        <td><?=$user->getLastname()." ".$user->getFirstname()?></td>
-                        <td><?=$account->getValue()?></td>
-                        </tr>
-                    <?php
-                    }
-                ?>
-                    </tbody>
-                </table>
-	</div>
-
-	<?php
-} else { 
+if(login_check($db) == true) 
+{
     ?>
-	<p>You are not authorized to access this page, please login.</p>
-	<?php
+        <h2>Overview</h2>
+    <?php
+} 
+else 
+{ 
+    ?>
+        <p>You are not authorized to access this page, please login.</p>
+    <?php
 }
 ?>
-<?php include("/layout/footer.html");?>
+<?php
+    include '/includes/includeFooter.php';
+?>

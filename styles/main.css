@@ -1,19 +1,31 @@
 @import url("reset.css");
-.nav{
-background-color:#ababab;
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:50px;
+
+.nav
+{
+    background-color:#ababab;
+    width:100%;
+    height:50px;
 }
-.content{
-margin-top:60px;
+
+#globalContent
+{
+    background-color: beige;
 }
-.logout,.user_data{
-display:inline;
+
+#globalFooter
+{
+    background-color: #ababab;
+    width: 100%;
+    height: 50px;
 }
-.logout{
-float:right;
-margin-right:10px;
+
+.logout,.user_data 
+{
+    display:inline;
+}
+
+.logout
+{
+    float:right;
+    margin-right:10px;
 }

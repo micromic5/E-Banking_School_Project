@@ -1,7 +1,6 @@
 <?php
-include("/layout/header.html");
+include '/includes/includeHeader.php';
 include_once 'includes/register.inc.php';
-include_once 'includes/functions.php';
 ?>
 		<!-- Registration form to be output if the POST variables are not
 		set or if the registration script caused an error. -->
@@ -49,5 +48,5 @@ include_once 'includes/functions.php';
 		</form>
 		<p>Return to the <a href="index.php">login page</a>.</p>
 <?php
-include("/layout/footer.html");
+include '/includes/includeFooter.php';
 ?>
