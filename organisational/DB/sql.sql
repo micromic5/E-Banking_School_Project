@@ -44,11 +44,11 @@ DROP TABLE IF EXISTS `db_ebanking`.`tbl_account` ;
 CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_account` (
   `PK_accountNumber` INT NOT NULL AUTO_INCREMENT,
   `value` DECIMAL(63,2) NOT NULL,
-  `tbl_accountType_PK_accountType` INT NOT NULL,
+  `FK_accountType` INT NOT NULL,
   PRIMARY KEY (`PK_accountNumber`),
-  INDEX `fk_tbl_account_tbl_accountType1_idx` (`tbl_accountType_PK_accountType` ASC),
+  INDEX `fk_tbl_account_tbl_accountType1_idx` (`FK_accountType` ASC),
   CONSTRAINT `fk_tbl_account_tbl_accountType1`
-    FOREIGN KEY (`tbl_accountType_PK_accountType`)
+    FOREIGN KEY (`FK_accountType`)
     REFERENCES `db_ebanking`.`tbl_accountType` (`PK_accountType`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -100,11 +100,11 @@ CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_accountPermission` (
   `PK_accountPermission` INT NOT NULL AUTO_INCREMENT,
   `FK_customerNumber` INT NOT NULL,
   `FK_accountNumber` INT NOT NULL,
-  `tbl_permission_PK_permission` INT NOT NULL,
+  `FK_permission` INT NOT NULL,
   PRIMARY KEY (`PK_accountPermission`),
   INDEX `PK_customerNumber_idx` (`FK_customerNumber` ASC),
   INDEX `fk_tbl_accountPermission_tbl_account1_idx` (`FK_accountNumber` ASC),
-  INDEX `fk_tbl_accountPermission_tbl_permission1_idx` (`tbl_permission_PK_permission` ASC),
+  INDEX `fk_tbl_accountPermission_tbl_permission1_idx` (`FK_permission` ASC),
   CONSTRAINT `PK_customerNumber`
     FOREIGN KEY (`FK_customerNumber`)
     REFERENCES `db_ebanking`.`tbl_customer` (`PK_customerNumber`)
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_accountPermission` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tbl_accountPermission_tbl_permission1`
-    FOREIGN KEY (`tbl_permission_PK_permission`)
+    FOREIGN KEY (`FK_permission`)
     REFERENCES `db_ebanking`.`tbl_permission` (`PK_permission`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
