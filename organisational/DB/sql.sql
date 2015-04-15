@@ -30,7 +30,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `db_ebanking`.`tbl_accountType` ;
 
 CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_accountType` (
-  `PK_accountType` INT NOT NULL,
+  `PK_accountType` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`PK_accountType`))
 ENGINE = InnoDB;
@@ -85,7 +85,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `db_ebanking`.`tbl_permission` ;
 
 CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_permission` (
-  `PK_permission` INT NOT NULL,
+  `PK_permission` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`PK_permission`))
 ENGINE = InnoDB;
