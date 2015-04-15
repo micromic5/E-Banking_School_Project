@@ -1,37 +1,43 @@
 <?php
 include_once 'connectionEntity.php';
+include_once 'accountEntity.php';
 
 class AccountPermission extends Connection{
 	private $PK_accountPermission;
-	private $customers;
-	private $accounts;
+	private $account;
 	private $permission;
 	
-	function AccountPermission($PK_customerNumber){
-		$acp=parent::getConnection()->query("Select PK_accountPermission From tbl_accountpermission Where FK_customerNumber=".$PK_customerNumber);
-		$acpArray = array();
-		while($row = $acp->fetchObject()){
-			$acpArray[]=$this->withACP($row->PK_accountPermission);
-		}
-	}
 	//second Constructor
-	public function withACP($PK_accountPermission){
+	public function AccountPermission($PK_accountPermission){
 		$acp=parent::getConnection()->query("Select * From tbl_accountpermission Where PK_accountPermission=".$PK_accountPermission)->fetchObject();
-	}
+                $this->permission = $acp->permission;
+                $this->PK_accountPermission = $acp->PK_accountPermission;
+                $this->account = new Account($acp->FK_accountNumber);
+        }
 	
-	function getPK_CustomerNumber(){
-		return $this->PK_customerNumber;
-	}
-	
-	function getLastname(){
-		return $this->lastname;
-	}
-	
-	function getFirstname(){
-		return $this->firstname;
-	}
-	
-	function getAge(){
-		return $this->age;
-	}
+        public function getPK_accountPermission() {
+            return $this->PK_accountPermission;
+        }
+
+        public function getAccount() {
+            return $this->account;
+        }
+
+        public function getPermission() {
+            return $this->permission;
+        }
+
+        public function setPK_accountPermission($PK_accountPermission) {
+            $this->PK_accountPermission = $PK_accountPermission;
+        }
+
+        public function setAccount($account) {
+            $this->account = $account;
+        }
+
+        public function setPermission($permission) {
+            $this->permission = $permission;
+        }
+
+
 }
