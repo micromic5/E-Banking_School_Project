@@ -6,7 +6,7 @@ class Customer extends Connection{
 	private $lastname;
 	private $firstname;
 	private $age;
-        private $accountsPermission;
+        private $accountsPermissions;
 	
 	function Customer($PK_customerNumber){
 		$customer=parent::getConnection()->query("Select * From tbl_customer Where PK_customerNumber=".$PK_customerNumber)->fetchObject();
@@ -20,7 +20,7 @@ class Customer extends Connection{
 		while($row = $acp->fetchObject()){
 			$acpArray[]=new AccountPermission($row->PK_accountPermission);
 		}
-                $this->accountsPermission = $acpArray;
+                $this->accountsPermissions = $acpArray;
 	}
 	
 	function getPK_CustomerNumber(){
@@ -39,8 +39,8 @@ class Customer extends Connection{
 		return $this->age;
 	}
         
-        public function getAccountsPermission() {
-            return $this->accountsPermission;
+        public function getAccountsPermissions() {
+            return $this->accountsPermissions;
         }
 
 }

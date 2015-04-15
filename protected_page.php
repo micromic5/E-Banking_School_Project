@@ -13,6 +13,7 @@ if(login_check($db) == true) {
                 <table>
                     <thead>
                         <th>Konto-Nummer</th>
+                        <th>Konto Zugriff</th>
                         <th>Konto-Bezeichnung</th>
                         <th>Konto-Inhaber</th>
                         <th>Saldo</th>
@@ -20,13 +21,13 @@ if(login_check($db) == true) {
                     <tbody>
                 <?php
                     $user = new Customer($_SESSION['PK_customerNumber']);
-                    $acpArr = $user->getAccountsPermission();
+                    $acpArr = $user->getAccountsPermissions();
                     foreach($acpArr as $accountPermission){
                         $account = $accountPermission->getAccount();
                     ?>
                         <tr>
                         <td><?=$account->getPK_accountNumber()?></td>
-                        <td><?=$account->getAccountType()?></td>
+                        <td><?=$accountPermission->getPermission()?></td>
                         <td><?=$account->getAccountType()?></td>
                         <td><?=$user->getLastname()." ".$user->getFirstname()?></td>
                         <td><?=$account->getValue()?></td>

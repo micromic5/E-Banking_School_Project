@@ -24,16 +24,4 @@ class Account extends Connection{
         public function getAccountType() {
             return $this->accountType;
         }
-
-        public function setPK_accountNumber($PK_accountNumber) {
-            $this->PK_accountNumber = $PK_accountNumber;
-        }
-
-        public function setValue($value) {
-            $this->value = $value;
-        }
-
-        public function setAccountType($accountType) {
-            $this->accountType = $accountType;
-        }
 }
