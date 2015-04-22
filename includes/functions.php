@@ -213,6 +213,7 @@ function esc_url($url) {
  */
 function err_report($file, $msg, $err){ //__File__, message, php error
     
+    
 }
 
 function err_getLast(){
