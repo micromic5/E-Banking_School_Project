@@ -1,6 +1,6 @@
 <?php 
-include '/includes/includeHeader.php';
-include_once 'entity/accountPermissionEntity.php';
+require_once '/includes/includeHeader.php';
+require_once 'entity/accountPermissionEntity.php';
 
 if(login_check($db) == true) 
 {
@@ -16,5 +16,5 @@ else
 }
 ?>
 <?php
-    include '/includes/includeFooter.php';
+    require_once '/includes/includeFooter.php';
 ?>

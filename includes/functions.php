@@ -101,9 +101,8 @@ function login($PK_customerNumber, $password, $db)
 
 function login_check($db) {
 	// Check if all session variables are set 
-	if (isset($_SESSION['PK_customerNumber'], 
-						//$_SESSION['username'], 
-						$_SESSION['login_string'])) {
+	if (isset($_SESSION['PK_customerNumber'], $_SESSION['login_string'])) 
+                {
  
 		$PK_customerNumber = $_SESSION['PK_customerNumber'];
 		$login_string = $_SESSION['login_string'];
