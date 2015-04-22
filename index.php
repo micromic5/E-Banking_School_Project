@@ -1,5 +1,5 @@
 <?php
-    include_once 'includes/includeHeader.php';
+    require_once 'includes/includeHeader.php';
 
     if (login_check($db) == true) {
         $logged = 'in';
@@ -32,5 +32,5 @@
                 }
 ?>      
 <?php 
-include("/includes/includeFooter.php");
+require_once '/includes/includeFooter.php';
 ?>

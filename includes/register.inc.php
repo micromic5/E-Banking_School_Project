@@ -6,15 +6,10 @@ $error_msg = "";
 if (isset($_POST['firstname'], $_POST['lastname'], $_POST['passwordHash'], $_POST['age'])) 
 {
     // Sanitize and validate the data passed in
+    //TODO
     $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
     $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
-    /*$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $email = filter_var($email, FILTER_VALIDATE_EMAIL);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        // Not a valid email
-        $error_msg .= '<p class="error">The email address you entered is not valid</p>';
-    }*/
- 
+
     $password = filter_input(INPUT_POST, 'passwordHash', FILTER_SANITIZE_STRING);
     if (strlen($password) != 128) {
         // The hashed pwd should be 128 characters long.

@@ -1,6 +1,6 @@
 <?php
 
-include("/layout/footer.html");
+require_once '/layout/footer.html';
 
 ?>
 </div>

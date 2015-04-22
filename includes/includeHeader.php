@@ -1,8 +1,7 @@
 <?php
-    include_once '/includes/functions.php';
-    include_once '/entity/customerEntity.php';
+    require_once '/includes/functions.php';
+    require_once '/entity/customerEntity.php';
     sec_session_start();
-    // Include database connection and functions here.  See 3.1. 
-    include("/layout/header.html");
-    include("/layout/nav.php");
+    require_once '/layout/header.html';
+    require_once '/layout/nav.php';
 ?>

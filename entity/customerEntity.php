@@ -1,7 +1,9 @@
 <?php
 include_once 'connectionEntity.php';
 include_once 'accountPermissionEntity.php';
-class Customer extends Connection{
+
+class Customer extends Connection
+{
 	private $PK_customerNumber;
 	private $lastname;
 	private $firstname;

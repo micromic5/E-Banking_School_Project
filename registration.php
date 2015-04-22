@@ -1,6 +1,6 @@
 <?php
-include '/includes/includeHeader.php';
-include_once 'includes/register.inc.php';
+require_once '/includes/includeHeader.php';
+require_once 'includes/register.inc.php';
 ?>
 		<!-- Registration form to be output if the POST variables are not
 		set or if the registration script caused an error. -->
@@ -48,5 +48,5 @@ include_once 'includes/register.inc.php';
 		</form>
 		<p>Return to the <a href="index.php">login page</a>.</p>
 <?php
-include '/includes/includeFooter.php';
+require_once '/includes/includeFooter.php';
 ?>

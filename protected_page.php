@@ -1,7 +1,7 @@
 <?php 
-include '/includes/includeHeader.php';
-include_once 'entity/accountPermissionEntity.php';
-include_once 'entity/customerEntity.php';
+require_once '/includes/includeHeader.php';
+require_once 'entity/accountPermissionEntity.php';
+require_once 'entity/customerEntity.php';
 if(login_check($db) == true) 
 {
     $saldo = 0;
@@ -45,5 +45,5 @@ else
 }
 ?>
 <?php
-    include '/includes/includeFooter.php';
+    require_once '/includes/includeFooter.php';
 ?>
