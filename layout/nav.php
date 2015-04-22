@@ -8,8 +8,8 @@
             <?php
 
             //holt den momentan eingelogten user aus der Datenbank
-            $loggedUser = new User($_SESSION["PK_customerNumber"]);
-            ?> 	
+            $loggedUser = new Customer($_SESSION["PK_customerNumber"]);
+            ?>
             <span>
             Willkommen <?=$loggedUser->getLastname();?>
             <?=$loggedUser->getFirstname();?>
