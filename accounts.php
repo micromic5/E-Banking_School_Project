@@ -1,5 +1,5 @@
 <?php 
-require_once '/includes/includeHeader.php';
+require_once 'includes/includeHeader.php';
 if(login_check($db) == true) 
 {
     $saldo = 0;
@@ -48,5 +48,5 @@ else
 }
 ?>
 <?php
-    require_once '/includes/includeFooter.php';
+    require_once 'includes/includeFooter.php';
 ?>

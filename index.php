@@ -32,5 +32,5 @@
                 }
 ?>      
 <?php 
-require_once '/includes/includeFooter.php';
+    require_once 'includes/includeFooter.php';
 ?>
