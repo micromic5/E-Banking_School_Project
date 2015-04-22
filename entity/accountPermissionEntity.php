@@ -1,6 +1,7 @@
 <?php
 include_once 'connectionEntity.php';
 include_once 'accountEntity.php';
+include_once 'permissionEntity.php';
 
 class AccountPermission extends Connection{
 	private $PK_accountPermission;
@@ -10,7 +11,7 @@ class AccountPermission extends Connection{
 	//second Constructor
 	public function AccountPermission($PK_accountPermission){
 		$acp=parent::getConnection()->query("Select * From tbl_accountpermission Where PK_accountPermission=".$PK_accountPermission)->fetchObject();
-                $this->permission = $acp->permission;
+                $this->permission = new Permission($acp->FK_permission);
                 $this->PK_accountPermission = $acp->PK_accountPermission;
                 $this->account = new Account($acp->FK_accountNumber);
         }
