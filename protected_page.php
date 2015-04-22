@@ -31,9 +31,14 @@ if(login_check($db) == true)
                     <?php
                     }
                 ?>
+                    <tr>
+                        <td><span>Gesamt Saldo:</span></td>
+                        <td></td>
+                        <td></td>
+                        <td><span><?= number_format((float)$saldo, 2, '.', '') ?></span></td>
+                    </tr>
                    </tbody>
-            </table>
-            <p>Saldo:<?= $saldo ?></p>
+            </table>            
  	</div>
     <?php
 } 
