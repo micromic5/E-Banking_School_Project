@@ -2,7 +2,6 @@
 require_once '/includes/includeHeader.php';
 if(login_check($db) == true) 
 {
-    $saldo = 0;
     ?>
         <h2>Home</h2>
     <?php

@@ -5,6 +5,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema db_ebanking
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `db_ebanking` ;
 CREATE SCHEMA IF NOT EXISTS `db_ebanking` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `db_ebanking` ;
 
@@ -129,33 +130,22 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `db_ebanking`.`tbl_booking` ;
 
 CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_booking` (
-  `PK_booking` INT NOT NULL,
+  `PK_booking` INT NOT NULL AUTO_INCREMENT,
   `value` DECIMAL(63,2) NOT NULL,
   `bookingTime` DATETIME NOT NULL,
   `dueTime` DATETIME NOT NULL,
-  PRIMARY KEY (`PK_booking`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `db_ebanking`.`tbl_booking_has_tbl_account`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_ebanking`.`tbl_booking_has_tbl_account` ;
-
-CREATE TABLE IF NOT EXISTS `db_ebanking`.`tbl_booking_has_tbl_account` (
-  `tbl_booking_PK_booking` INT NOT NULL,
-  `tbl_account_PK_accountNumber` INT NOT NULL,
-  `isCredit` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`tbl_booking_PK_booking`, `tbl_account_PK_accountNumber`),
-  INDEX `fk_tbl_booking_has_tbl_account_tbl_account1_idx` (`tbl_account_PK_accountNumber` ASC),
-  INDEX `fk_tbl_booking_has_tbl_account_tbl_booking1_idx` (`tbl_booking_PK_booking` ASC),
-  CONSTRAINT `fk_tbl_booking_has_tbl_account_tbl_booking1`
-    FOREIGN KEY (`tbl_booking_PK_booking`)
-    REFERENCES `db_ebanking`.`tbl_booking` (`PK_booking`)
+  `receiver` INT NOT NULL,
+  `transmitter` INT NOT NULL,
+  PRIMARY KEY (`PK_booking`),
+  INDEX `fk_tbl_booking_tbl_account1_idx` (`receiver` ASC),
+  INDEX `fk_tbl_booking_tbl_account2_idx` (`transmitter` ASC),
+  CONSTRAINT `fk_tbl_booking_tbl_account1`
+    FOREIGN KEY (`receiver`)
+    REFERENCES `db_ebanking`.`tbl_account` (`PK_accountNumber`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tbl_booking_has_tbl_account_tbl_account1`
-    FOREIGN KEY (`tbl_account_PK_accountNumber`)
+  CONSTRAINT `fk_tbl_booking_tbl_account2`
+    FOREIGN KEY (`transmitter`)
     REFERENCES `db_ebanking`.`tbl_account` (`PK_accountNumber`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
