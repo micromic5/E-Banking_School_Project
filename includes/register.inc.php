@@ -6,7 +6,7 @@ $error_msg = "";
 if (isset($_POST['firstname'], $_POST['lastname'], $_POST['passwordHash'], $_POST['age'])) 
 {
     // Sanitize and validate the data passed in
-    //TODO
+    // Strip tags, optionally strip or encode special characters.
     $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
     $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
 
@@ -18,55 +18,6 @@ if (isset($_POST['firstname'], $_POST['lastname'], $_POST['passwordHash'], $_POS
     }
  
     $age = filter_input(INPUT_POST, 'age', FILTER_SANITIZE_NUMBER_INT);
-    // firstname & lastname validity and password validity have been checked client side.
-    // This should should be adequate as nobody gains any advantage from
-    // breaking these rules.
-    //
- 
-    /*$prep_stmt = "SELECT id FROM members WHERE email = ? LIMIT 1";
-    $stmt = $db->prepare($prep_stmt);
- 
-   // check existing email  
-    if ($stmt) {
-        $stmt->bind_param('s', $email);
-        $stmt->execute();
-        $stmt->store_result();
- 
-        if ($stmt->num_rows == 1) {
-            // A user with this email address already exists
-            $error_msg .= '<p class="error">A user with this email address already exists.</p>';
-                        $stmt->close();
-        }
-                $stmt->close();
-    } else {
-        $error_msg .= '<p class="error">Database error Line 39</p>';
-                $stmt->close();
-    }*/
- 
-    // check existing Username
-    /*$prep_stmt = "SELECT id FROM member WHERE id = ? LIMIT 1";
-    $stmt = $db->prepare($prep_stmt);
- 
-    if ($stmt) {
-        $stmt->bind_param('s', $pk_customerNumber);
-        $stmt->execute();
-        $stmt->store_result();
- 
-                if ($stmt->num_rows == 1) {
-                        // A user with this pk_customerNumber already exists
-                        $error_msg .= '<p class="error">A user with this username already exists</p>';
-                        $stmt->close();
-                }
-                $stmt->close();
-        } else {
-                $error_msg .= '<p class="error">Database error line 55</p>';
-                $stmt->close();
-        }*/
- 
-    // TODO: 
-    // We'll also have to account for the situation where the user doesn't have
-    // rights to do registration, by checking what type of user is attempting to
-    // perform the operation.
  
     if (empty($error_msg)) {
         // Create a random salt
@@ -84,6 +35,7 @@ if (isset($_POST['firstname'], $_POST['lastname'], $_POST['passwordHash'], $_POS
                 header('Location: ../registration.php?err=Registration failure: INSERT');
             }
         }
+        
         header('Location: register_success.php');
     }
 }
