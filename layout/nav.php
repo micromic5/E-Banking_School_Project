@@ -3,36 +3,31 @@
     if (login_check($db))
     {
         
+        //holt den momentan eingelogten user aus der Datenbank
+        $loggedUser = new Customer($_SESSION["PK_customerNumber"]);
+        
     ?>
-    <div class="user_data">
-            <?php
-
-            //holt den momentan eingelogten user aus der Datenbank
-            $loggedUser = new Customer($_SESSION["PK_customerNumber"]);
-            ?>
+    <div class="userData">
             <span>
-            Willkommen <?=$loggedUser->getLastname();?>
-            <?=$loggedUser->getFirstname();?>
+            Eingeloggt als: <?=$loggedUser->getLastname() . " " . $loggedUser->getFirstname();?>
             </span>
+        <span><a href="includes/logout.php">log out</a></span>
     </div>
-    <div class="menu">
+    <div class="linkList">
         <ul>
             <li class="menu-item">
-                <span><a href="protected_page.php">Home</a></span>
+                <a href="protected_page.php">Home</a>
             </li>
             <li class="menu-item">
-                <span><a href="accounts.php">Konti Übersicht</a></span>
+                <a href="accounts.php">Konti Übersicht</a>
             </li>
             <li class="menu-item">
-                <span><a href="bookings.php">Buchungs Übersicht</a></span>
+                <a href="bookings.php">Buchungs Übersicht</a>
             </li>
             <li class="menu-item">
-                <span><a href="newBooking.php">Neue Buchung</a></span>
+                <a href="newBooking.php">Neue Buchung</a>
             </li>
         </ul>
-    </div>
-    <div class="logout">
-            <a href="includes/logout.php">Log out</a>
     </div>
     <?php
     

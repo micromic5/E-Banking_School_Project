@@ -1,12 +1,5 @@
 @import url("reset.css");
 
-.nav
-{
-    background-color:#ababab;
-    width:100%;
-    height:50px;
-}
-
 #globalContent
 {
     background-color: beige;
@@ -19,13 +12,29 @@
     height: 50px;
 }
 
-.logout,.user_data 
+.nav
 {
-    display:inline;
+    background-color:#ababab;
+    width:100%;
+    min-height:50px;
 }
 
-.logout
+.userData
 {
-    float:right;
-    margin-right:10px;
+    margin-bottom: 4px;
+}
+
+.linkList > ul
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style-type: none;
+}
+
+.linkList > ul > li
+{
+    display: inline;
+    margin-right: 1em;
+    margin-left: 1em;
 }

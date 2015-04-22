@@ -10,7 +10,7 @@ if(login_check($db) == true)
 else 
 { 
     ?>
-        <p>You are not authorized to access this page, please login.</p>
+        <p>You are not authorized to access this page, <a href="index.php">please login</a>.</p>
     <?php
 }
 ?>
