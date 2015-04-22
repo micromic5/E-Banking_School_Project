@@ -206,4 +206,20 @@ function esc_url($url) {
 		return $url;
 	}
 }
+/*
+ *  Functions for Errorreporting
+ *  All functions beginn with 'err_'
+ *  Error-Files localized in [project_root_dir]/error
+ */
+function err_report($file, $msg, $err){ //__File__, message, php error
+    
+}
+
+function err_getLast(){
+    
+}
+
+function err_getReport(){
+    
+}
 ?>
